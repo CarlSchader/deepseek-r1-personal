@@ -2,5 +2,10 @@
 
 MODEL_NAME="deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 
-vllm serve $MODEL_NAME --tensor-parallel-size 1 --max-model-len 32768 --enforce-eager
+vllm serve $MODEL_NAME \
+  --tensor-parallel-size 1 \
+  --max-model-len 32768 \
+  --enforce-eager \
+  --host 0.0.0.0 \
+  --port 8000
 
