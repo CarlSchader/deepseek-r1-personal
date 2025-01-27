@@ -61,3 +61,4 @@ maildir
 
 # venv
 .venv
+.web_venv

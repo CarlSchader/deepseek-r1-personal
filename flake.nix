@@ -17,7 +17,7 @@
         };
       in
       {
-        devShell = pkgs.mkShell rec {
+        devShells.default = pkgs.mkShell rec {
           buildInputs = with pkgs; [
             python312
             cudatoolkit
@@ -42,6 +42,24 @@
 
             # Python with packages
             touch ./requirements.txt
+
+            echo Done!
+          '';
+        };
+
+        devShells.web = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            python312
+          ];
+
+          shellHook = ''
+            echo "activating shell"
+
+            python -m venv ./.web_venv
+            source ./.web_venv/bin/activate
+
+            # Python with packages
+            touch ./requirements_web_server.txt
 
             echo Done!
           '';
